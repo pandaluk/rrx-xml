@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>RRX - XML Program</title>
+	<!-- https://electronjs.org/docs/tutorial 
+						/security#csp-meta-tag -->
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+	<link rel="stylesheet" href="./index.css">
+</head>
+
+<body onmousedown="event.preventDefault ? event.preventDefault() : event.returnValue = false">
+
+	<div class="container">
+		<div class="box">
+			<button id="dirs">Selecione a pasta para salvar os arquivos</button>
+			<!-- <input placeholder="Selecione a pasta para salvar os arquivos" type="button" > </button> -->
+			<h3>Arraste e solte os XML na janela.</h3>
+		</div>
+	</div>
+	<!-- Adding Individual Renderer Process JS File -->
+	<script src="index.js"></script>
+</body>
+
+</html>

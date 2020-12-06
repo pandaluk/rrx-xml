@@ -1,0 +1,30 @@
+body{
+    background-color: #f9f9f9;
+    margin: 0px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #e3e3e3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box {
+    width: 60vw;
+    height: 60vh;
+    background: #f9f9f9;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/rrx.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position-y: 20px;
+}
