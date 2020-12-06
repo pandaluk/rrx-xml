@@ -10,7 +10,7 @@ function createWindow() {
 
   const win = new BrowserWindow({
     preload: path.join(__dirname, '/src/index.js'),
-    
+
     alwaysOnTop: false,
     resizable: false,
     width: 800,
@@ -55,12 +55,21 @@ ipcMain.on('dropXMLFile', (event, args) => {
     let json = JSON.parse(parser.toJson(data, { reversible: true }));
     let itens = json['nfeProc']['NFe']['infNFe']['det']
 
-    for (const item of itens) {
-      let dateSplited = item['prod']['rastro']['dVal'].$t.split('-').slice(0, 2).join('')
-      let newLoteValue = item['prod']['rastro']['nLote'].$t.concat(dateSplited)
+    if (itens.length > 1) {
+      for (const item of itens) {
+        let dateSplited = item['prod']['rastro']['dVal'].$t.split('-').slice(0, 2).join('')
+        let newLoteValue = item['prod']['rastro']['nLote'].$t.concat(dateSplited)
 
-      item['prod']['rastro']['nLote'].$t = newLoteValue
+        item['prod']['rastro']['nLote'].$t = newLoteValue
+      }
+    } else {
+      let dateSplited = itens['prod']['rastro']['dVal'].$t.split('-').slice(0, 2).join('')
+      let newLoteValue = itens['prod']['rastro']['nLote'].$t.concat(dateSplited)
+
+      itens['prod']['rastro']['nLote'].$t = newLoteValue
     }
+
+
 
     let stringified = JSON.stringify(json);
     var xml = parser.toXml(stringified);
